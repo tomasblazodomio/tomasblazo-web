@@ -1,0 +1,939 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tomas Blazo Book Mentor</title>
+<meta name="description" content="Written feedback, mentoring and publishing strategy for authors, from a former publisher who rejected books for a living. By Tomas Blazo.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap">
+<style>
+/* Layout concept: a publisher's reading desk at night. Dark warm page, one amber lamp (accent),
+   typewriter mono labels, a red rejection stamp for SOLD OUT. Open programs first, full ones below. */
+:root {
+  --bg: #0d0a08;
+  --surface: #15110d;
+  --surface-2: #1c1611;
+  --rule: #2c231b;
+  --text: #eee4d6;
+  --muted: #a99c8d;
+  --amber: #dba35c;
+  --amber-ink: #1a1208;
+  --stamp: #d0553b;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+.wrap {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mono { font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+/* header */
+.top { padding-block: 22px; border-bottom: 1px solid var(--rule); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; font-weight: 600; }
+.nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.nav a { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--amber); }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 600; font-size: 15px; letter-spacing: 0.01em;
+  padding: 14px 22px; border-radius: 3px; border: 1px solid var(--amber);
+  text-decoration: none; cursor: pointer; line-height: 1.2; text-align: center;
+}
+.btn-primary { background: var(--amber); color: var(--amber-ink); }
+.btn-primary:hover { background: #e8b574; }
+.btn-ghost { background: transparent; color: var(--amber); }
+.btn-ghost:hover { background: rgba(219,163,92,0.1); }
+
+/* hero */
+.hero { padding-block: 64px 56px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 56px; align-items: center; }
+.eyebrow { color: var(--amber); margin-bottom: 20px; }
+.hero h1 { font-size: clamp(42px, 6.4vw, 84px); font-weight: 700; margin-bottom: 26px; }
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--amber); }
+.lead { font-size: clamp(18px, 2vw, 21px); color: #d8ccbc; max-width: 34em; margin-bottom: 32px; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 560px; border: 1px solid var(--rule); background: var(--surface); }
+.board div { padding: 14px 16px; border-right: 1px solid var(--rule); min-width: 0; }
+.board div:last-child { border-right: 0; }
+.board dt { color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.board dd { margin: 0; font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.1; }
+.board dd small { display: block; font-family: var(--font-body); font-size: 13px; font-weight: 400; color: var(--muted); margin-top: 3px; }
+.portrait { margin: 0; justify-self: end; width: 100%; max-width: 420px; }
+.portrait img {
+  display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--amber);
+  box-shadow: 0 0 0 10px var(--bg), 0 0 0 11px var(--rule), 0 28px 60px rgba(0,0,0,.55);
+}
+
+/* old school band, promise strip, badges */
+.oldschool { background: var(--amber); color: var(--amber-ink); }
+.oldschool .wrap { display: flex; align-items: center; gap: 24px; padding-block: 22px; }
+.oldschool b { font-family: var(--font-mono); font-size: clamp(20px, 3vw, 30px); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; border: 3px solid var(--amber-ink); padding: 6px 14px; }
+.oldschool p { margin: 0; font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 24px); font-weight: 600; line-height: 1.25; }
+.promise { background: var(--surface); }
+.promise ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.promise li { padding: 24px 22px; border-right: 1px solid var(--rule); min-width: 0; }
+.promise li:last-child { border-right: 0; }
+.promise b { display: block; font-family: var(--font-display); font-size: 28px; color: var(--amber); line-height: 1.1; margin-bottom: 6px; }
+.promise span { color: #d0c4b4; font-size: 15.5px; }
+.steps.five { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+.steps.five h3 { font-size: 21px; }
+.steps.five p { font-size: 15px; }
+@media (max-width: 980px) { .steps.five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .steps.five { grid-template-columns: 1fr; } }
+.pill.pill-pop { background: var(--amber); color: var(--amber-ink); font-weight: 700; }
+.tile.popular { border-color: var(--amber); box-shadow: 0 0 0 1px var(--amber); }
+.nda { margin: 12px 0 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: var(--amber); }
+.nda::before { content: "\2713  "; }
+.split { margin: 8px 0 0; font-size: 14.5px; color: #d0c4b4; }
+.split b { color: var(--text); }
+.limit { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; position: relative; }
+.limit-tag { display: inline-block; border: 2px solid var(--stamp); color: var(--stamp); padding: 6px 12px; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.tip { width: 28px; height: 28px; flex: none; border-radius: 50%; border: 1.5px solid var(--amber); background: transparent; color: var(--amber); font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 16px; cursor: help; padding: 0; line-height: 1; }
+.tip-text { position: absolute; left: 0; top: calc(100% + 8px); z-index: 5; width: min(340px, 100%); background: var(--bg); border: 1px solid var(--amber); padding: 14px 16px; font-size: 15px; line-height: 1.5; color: var(--text); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .15s, transform .15s; box-shadow: 0 14px 40px rgba(0,0,0,.6); }
+.limit:hover .tip-text, .limit:focus-within .tip-text, .limit.open .tip-text { opacity: 1; visibility: visible; transform: none; }
+@media (max-width: 720px) {
+  .oldschool .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .promise ul { grid-template-columns: 1fr; }
+  .promise li { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .promise li:last-child { border-bottom: 0; }
+}
+
+/* contact form, about list, legal */
+.contact { border: 1px solid var(--rule); background: var(--surface); padding: 44px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 40px; border-radius: 4px; }
+.contact h2 { font-size: clamp(28px, 3.4vw, 40px); margin-bottom: 12px; }
+.contact p { color: #d0c4b4; }
+.contact form { display: grid; gap: 14px; }
+.contact label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+.contact input, .contact textarea { width: 100%; background: var(--bg); color: var(--text); border: 1px solid #3a2e23; border-radius: 3px; padding: 13px 14px; font-family: var(--font-body); font-size: 16px; }
+.contact textarea { min-height: 130px; resize: vertical; }
+.contact .btn { justify-self: start; }
+.about-copy ul { margin: 0 0 24px; padding-left: 20px; color: #d8ccbc; max-width: 34em; }
+.about-copy li { margin-bottom: 10px; }
+.about-copy .lead-in { font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.legalbox .legal { padding: 0 0 24px; color: #d0c4b4; max-width: 44em; }
+.legalbox .legal h4 { font-family: var(--font-display); font-size: 19px; color: var(--text); margin: 20px 0 6px; }
+.faq .legal p { padding: 0; margin: 0 0 10px; font-size: 16px; }
+.legal ul { padding-left: 20px; margin: 0 0 10px; }
+.legal li { margin-bottom: 6px; font-size: 16px; }
+.legal .upd { font-size: 14px; color: var(--muted); }
+.foot .links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+@media (max-width: 820px) { .contact { grid-template-columns: 1fr; padding: 28px 22px; } }
+
+/* credentials */
+.creds { border-block: 1px solid var(--rule); background: var(--surface); }
+.creds ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.creds li { padding: 24px 20px; border-right: 1px solid var(--rule); min-width: 0; }
+.creds li:last-child { border-right: 0; }
+.creds b { display: block; font-family: var(--font-display); font-size: 32px; font-weight: 600; line-height: 1.1; margin-bottom: 4px; }
+.creds span { color: var(--muted); font-size: 14px; }
+
+/* sections */
+.sec { padding-block: 84px; }
+.sec-head { max-width: 40em; margin-bottom: 40px; }
+.sec-head .eyebrow { margin-bottom: 14px; }
+.sec h2 { font-size: clamp(32px, 4.4vw, 52px); margin-bottom: 16px; }
+.sec-head p { color: #d0c4b4; }
+
+.group-label { display: flex; align-items: center; gap: 16px; margin: 0 0 20px; color: var(--muted); }
+.group-label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.group-label.gap-top { margin-top: 56px; }
+
+.tiles { display: grid; gap: 20px; }
+.tiles.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tiles.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tile {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+  padding: 26px 26px 28px; display: flex; flex-direction: column; min-width: 0;
+}
+.tile-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.pill { display: inline-block; padding: 4px 10px; border: 1px solid var(--amber); color: var(--amber); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 2px; }
+.tile.full .tile-top { margin-bottom: 28px; }
+.stamp {
+  display: inline-block; padding: 10px 22px 9px; margin: 8px 0 8px 10px;
+  border: 5px solid var(--stamp); outline: 2px solid var(--stamp); outline-offset: 4px;
+  background: rgba(208, 85, 59, 0.14); color: var(--stamp);
+  font-family: var(--font-mono); font-size: clamp(24px, 3.2vw, 34px); font-weight: 700; line-height: 1;
+  letter-spacing: 0.14em; text-transform: uppercase; transform: rotate(-6deg);
+}
+.tile h3 { font-size: 28px; margin-bottom: 14px; }
+.price { font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+.price small { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-left: 6px; }
+.sum { color: #d8ccbc; margin: 14px 0 16px; }
+.meta { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-block: 12px; border-block: 1px dashed var(--rule); margin-bottom: 4px; }
+.more {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  background: none; border: 0; border-bottom: 1px solid var(--rule); color: var(--text);
+  font-family: var(--font-body); font-weight: 600; font-size: 15px; padding: 14px 0; cursor: pointer; text-align: left;
+}
+.more:hover { color: var(--amber); }
+.more i { position: relative; width: 14px; height: 14px; flex: none; }
+.more i::before, .more i::after { content: ""; position: absolute; background: currentColor; left: 0; right: 0; top: 6px; height: 2px; transition: transform 0.2s; }
+.more i::after { transform: rotate(90deg); }
+.more[aria-expanded="true"] i::after { transform: rotate(0deg); }
+.detail { padding-top: 16px; }
+.detail ul { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 10px; }
+.detail li { position: relative; padding-left: 22px; font-size: 15.5px; color: #d8ccbc; }
+.detail li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 10px; height: 1px; background: var(--amber); }
+.detail .for { font-size: 15px; color: var(--muted); }
+.detail .for b { color: var(--text); font-weight: 600; }
+.cta { margin-top: auto; padding-top: 22px; }
+.cta .btn { width: 100%; }
+.notice { margin-top: 10px; font-size: 14px; color: var(--amber); }
+.fineprint { margin-top: 20px; color: var(--muted); font-size: 14.5px; }
+
+/* sold out */
+.tile.full { background: var(--surface-2); }
+.tile.full .price { color: #cbbfae; }
+.wait { margin-top: auto; padding-top: 22px; }
+.wait-label { font-family: var(--font-body); font-weight: 600; font-size: 15px; margin-bottom: 10px; display: block; }
+.wait-row { display: flex; gap: 10px; }
+.wait-row input[type="email"] {
+  flex: 1; min-width: 0; background: var(--bg); color: var(--text); border: 1px solid #3a2e23;
+  border-radius: 3px; padding: 13px 14px; font-family: var(--font-body); font-size: 16px;
+}
+.wait-row input::placeholder { color: #7d7064; }
+.wait-row .btn { white-space: nowrap; }
+.wait-note { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+.wait-msg { margin-top: 8px; font-size: 14px; min-height: 1.2em; }
+.wait-msg.ok { color: var(--amber); }
+.wait-msg.err { color: var(--stamp); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* how it works */
+.how { background: var(--surface); border-block: 1px solid var(--rule); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; counter-reset: s; }
+.steps li { counter-increment: s; min-width: 0; }
+.steps li::before { content: counter(s); display: block; font-family: var(--font-display); font-size: 56px; line-height: 1; color: var(--amber); margin-bottom: 12px; }
+.steps h3 { font-size: 24px; margin-bottom: 8px; }
+.steps p { color: #d0c4b4; font-size: 16px; }
+
+/* about */
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: center; }
+.about-grid figure { margin: 0; }
+.about-grid img { width: 100%; height: auto; border-radius: 3px; border: 1px solid var(--rule); }
+.trust { margin: -12px 0 32px; max-width: 34em; color: var(--muted); font-size: 15px; }
+.trust b { color: var(--text); font-weight: 600; }
+
+/* books */
+.books-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.book { margin: 0; min-width: 0; }
+.book img { width: 100%; height: auto; border-radius: 2px; background: #fff; box-shadow: 0 16px 32px rgba(0, 0, 0, 0.55); }
+.book figcaption { margin-top: 14px; font-size: 14px; line-height: 1.35; color: var(--muted); }
+.book figcaption b { display: block; color: var(--text); font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.books-sk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 620px; }
+.books-sk .book img { box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5); }
+.books-note { margin-top: 18px; color: var(--muted); font-size: 14.5px; max-width: 40em; }
+.about-copy p { color: #d8ccbc; margin-bottom: 16px; max-width: 34em; }
+.about-copy p:last-of-type { margin-bottom: 26px; }
+.about-copy h2 { margin-bottom: 20px; }
+
+/* free */
+.free-band { border: 1px solid var(--rule); background: var(--surface); padding: 44px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 32px; align-items: center; border-radius: 4px; }
+.free-band h2 { font-size: clamp(28px, 3.6vw, 42px); margin-bottom: 12px; }
+.free-band p { color: #d0c4b4; }
+.free-band .btn { justify-self: start; }
+
+/* terms */
+.faq { max-width: 820px; border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-mono); font-size: 22px; color: var(--amber); transition: transform 0.2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 0 22px; color: #d0c4b4; max-width: 40em; }
+.draft-note { margin-top: 16px; color: var(--muted); font-size: 14px; }
+
+/* footer */
+.foot { border-top: 1px solid var(--rule); padding-block: 40px 56px; color: var(--muted); font-size: 14.5px; }
+.foot .wrap { display: grid; gap: 10px; }
+.foot .mono { color: var(--text); }
+.foot a { color: var(--amber); }
+
+@media (max-width: 980px) {
+  .books-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tiles.three { grid-template-columns: minmax(0, 1fr); }
+  .tiles.two { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .creds ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .creds li:nth-child(2) { border-right: 0; }
+  .creds li:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+}
+@media (max-width: 820px) {
+  .hero { padding-block: 40px 40px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .portrait { justify-self: center; max-width: 340px; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .about-grid figure { max-width: 360px; }
+  .free-band { grid-template-columns: minmax(0, 1fr); padding: 30px 22px; }
+  .sec { padding-block: 60px; }
+}
+@media (max-width: 520px) {
+  body { font-size: 16.5px; }
+  .books-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .books-sk { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .board { grid-template-columns: minmax(0, 1fr); }
+  .board div { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .board div:last-child { border-bottom: 0; }
+  .wait-row { flex-direction: column; }
+  .tile { padding: 22px 20px 24px; }
+  .nav { gap: 16px; }
+  .hero-cta .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .more i::before, .more i::after, .faq summary::after { transition: none; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Tomas Blazo</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work">Work with me</a>
+      <a href="#about">About</a>
+      <a href="#terms">FAQ</a>
+      <a href="https://tomasblazo.substack.com" data-substack target="_blank" rel="noopener">Substack</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow mono">Former publisher. Book mentor.</p>
+        <h1>I rejected books <em>for a living.</em></h1>
+        <p class="lead">Now I show writers exactly why a manuscript gets rejected, and how to fix it before a publisher ever sees it. Straight, written feedback from someone who sat on the other side of the desk.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">See what is open</a>
+          <a class="btn btn-ghost" href="https://tomasblazo.substack.com" data-substack target="_blank" rel="noopener">Get the free Query Page Template</a>
+        </div>
+        <p class="trust"><b>Worked with authors including</b> Arnold Schwarzenegger, Jordan Belfort, Mitch Albom, Bronnie Ware and Randy Gage.</p>
+        <dl class="board" aria-label="Desk status">
+          <div><dt>Open now</dt><dd>3<small>programs</small></dd></div>
+          <div><dt>Full this year</dt><dd>2<small>programs</small></dd></div>
+          <div><dt>Format</dt><dd>Written<small>in English</small></dd></div>
+        </dl>
+      </div>
+      <figure class="portrait">
+        <img src="assets/tomas-blazo-hero.jpg" width="1000" height="1000" alt="Portrait of Tomas Blazo, author and former publisher">
+      </figure>
+    </div>
+  </section>
+
+  <section class="oldschool" aria-label="Old school">
+    <div class="wrap">
+      <b>Old school</b>
+      <p>I do everything myself. Every report, every call, every word of feedback comes from me, a human with 15 years in publishing. No AI.</p>
+    </div>
+  </section>
+
+  <section class="promise" aria-label="My promise">
+    <div class="wrap">
+      <ul>
+        <li><b>100% professional</b><span>Clear standards, real deadlines, straight feedback.</span></li>
+        <li><b>100% confidential</b><span>A confidentiality agreement comes with every program. Your book stays between us.</span></li>
+        <li><b>30 day money back</b><span>Not happy within 30 days of your order? You get every cent back.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="creds" aria-label="Background">
+    <div class="wrap">
+      <ul>
+        <li><b>15 years</b><span>inside book publishing</span></li>
+        <li><b>8 books</b><span>written by me</span></li>
+        <li><b>Director</b><span>of an international publishing house</span></li>
+        <li><b>1,800+</b><span>subscribers on Substack</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mono">Work with me</p>
+        <h2>Pick how deep you want to go.</h2>
+        <p>Three programs are open. Two are full for this year. Every open program is written feedback: no vague encouragement, just a clear list of what to fix and why. Every program comes with a confidentiality agreement and a 30 day money back guarantee.</p>
+      </div>
+
+      <p class="group-label mono">Open now</p>
+      <div class="tiles three">
+
+        <article class="tile">
+          <div class="tile-top"><span class="pill">Open</span></div>
+          <h3>Query Letter and First 15 Pages Review</h3>
+          <p class="price">€147</p>
+          <p class="sum">The two things a publisher reads before deciding to read anything else.</p>
+          <p class="meta">Written · Query letter + 15 pages · 7 days</p>
+          <p class="nda">Confidentiality agreement included</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d-query"><span>What you get</span><i aria-hidden="true"></i></button>
+          <div class="detail" id="d-query" hidden>
+            <ul>
+              <li>Your query letter tested against how publishers screen submissions</li>
+              <li>Your first 15 pages: where a reader gets bored, confused or leaves</li>
+              <li>A fix list ranked by importance, most urgent first</li>
+              <li>One round of follow up questions by email</li>
+            </ul>
+            <p class="for"><b>For</b> writers about to submit to agents or publishers.</p>
+          </div>
+          <div class="cta">
+            <a class="btn btn-primary" data-product="query" data-price="€147" href="#work">Order for €147</a>
+            <p class="notice" hidden></p>
+          </div>
+        </article>
+
+        <article class="tile popular">
+          <div class="tile-top"><span class="pill">Open</span><span class="pill pill-pop">Most popular</span></div>
+          <h3>Written Manuscript Edit</h3>
+          <p class="price">€787</p>
+          <p class="sum">I read your whole finished book and send you a 10 to 15 page report on what works, what does not and what to fix.</p>
+          <p class="meta">Written report · Up to 60,000 words · Delivery agreed by word count</p>
+          <p class="nda">Confidentiality agreement included</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d-edit"><span>What you get</span><i aria-hidden="true"></i></button>
+          <div class="detail" id="d-edit" hidden>
+            <ul>
+              <li>A 10 to 15 page editorial report, guaranteed, sent after I have read the entire book</li>
+              <li>What works, what does not, and what weakens the book</li>
+              <li>What to improve and what to delete, with specific CUT suggestions</li>
+              <li>Notes on structure, pacing, characters and voice, chapter by chapter</li>
+              <li>Sentence level fixes with real examples from your pages, including how to repair weak sentence construction</li>
+              <li>A fix list ranked by impact, so you know what to rewrite first</li>
+              <li>One round of follow up questions by email</li>
+              <li>Longer than 60,000 words? Email me before you order. The delivery date is agreed with you before you pay, based on your word count.</li>
+            </ul>
+            <p class="for"><b>For</b> writers with a finished book who want to know exactly what is on the page. This is work on a completed manuscript, not a half written draft.</p>
+          </div>
+          <div class="cta">
+            <a class="btn btn-primary" data-product="edit" data-price="€787" href="#work">Order for €787</a>
+            <p class="notice" hidden></p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-top"><span class="pill">Open</span></div>
+          <h3>How to Sell Your Book</h3>
+          <p class="price">€387</p>
+          <p class="sum">A complete marketing audit of your book: cover, back cover copy, market, readers and social networks, then a verdict on which publishing road fits you.</p>
+          <p class="meta">Written · Includes an interview · 10 days</p>
+          <p class="nda">Confidentiality agreement included</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d-path"><span>What you get</span><i aria-hidden="true"></i></button>
+          <div class="detail" id="d-path" hidden>
+            <ul>
+              <li>A complete marketing audit of your book, in writing, from cover to readers to social networks</li>
+              <li>A full review of your cover, front and back, with clear suggestions</li>
+              <li>Your book synopsis for the back cover, written from scratch or rewritten from your draft</li>
+              <li>Your book description (blurb) for the back cover and the online store page</li>
+              <li>A short interview with you about your goals, your book and your life as a writer</li>
+              <li>A market analysis: where your book sits, who buys it and who you compete with</li>
+              <li>A reader analysis: who your readers are, where they spend time and what makes them buy</li>
+              <li>An analysis of your social networks: what works, what does not and where to grow</li>
+              <li>A written verdict: traditional publisher, agent, small press or self publishing, and why the other roads do not fit</li>
+              <li>A realistic 90 day plan for what to do next</li>
+            </ul>
+            <p class="for"><b>For</b> writers with a finished or almost finished book who need a cover and a pitch that sell, and do not know yet which door to knock on.</p>
+          </div>
+          <div class="cta">
+            <a class="btn btn-primary" data-product="path" data-price="€387" href="#work">Order for €387</a>
+            <p class="notice" hidden></p>
+          </div>
+        </article>
+      </div>
+      <p class="fineprint">Prices are in euros. If you pay in USD, the price is converted at the current exchange rate, so the amount in dollars may differ slightly.</p>
+      <p class="fineprint"><b>After you order, I contact you within 24 hours</b> with the details of how we work together.</p>
+
+      <p class="group-label gap-top mono">Full for this year</p>
+      <div class="tiles two">
+
+        <article class="tile full">
+          <div class="tile-top"><span class="stamp">Sold out</span></div>
+          <h3>The Book Mentorship</h3>
+          <p class="price">$6,290<small>per year</small></p>
+          <div class="limit"><span class="limit-tag">Only 5 writers per year</span><button class="tip" type="button" aria-label="Why only 5 places">i</button><span class="tip-text" role="tooltip">I do all of this work myself, one to one, with no assistants and no AI. That is why I can only take 5 writers a year. More clients would mean less of me for each of you.</span></div>
+          <p class="sum">A quiet, confidential collaboration on your book, from the first plan to the finished manuscript.</p>
+          <p class="meta">12 months · 5 writers per year · Confidential</p>
+          <p class="nda">Confidentiality agreement included</p>
+          <p class="split"><b>Pay in 2 parts:</b> $3,500 to start, $2,790 within 60 days.</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d-mentor"><span>What it is</span><i aria-hidden="true"></i></button>
+          <div class="detail" id="d-mentor" hidden>
+            <ul>
+              <li>We build the plan for the whole book together: your goal, the story, the characters and the key decisions</li>
+              <li>Fiction or nonfiction, we map the full outline of the book before you write</li>
+              <li>We go through the book chapter by chapter, with my guidance and feedback on every chapter</li>
+              <li>Synopsis, book description and cover copy prepared with you</li>
+              <li>A marketing plan and the preparation of your book for launch</li>
+              <li>A weekly chat as needed: call, video, Zoom or in person, agreed with you</li>
+              <li>A signed confidentiality agreement. I tell nobody anything about your book.</li>
+            </ul>
+            <p class="for"><b>For</b> writers who want a partner for the whole journey, in private, until the book is finished.</p>
+          </div>
+          <form class="wait" data-list="book-mentorship" novalidate>
+            <label class="wait-label" for="w-mentor">All 5 places this year are taken. Get one email when a place opens.</label>
+            <div class="wait-row">
+              <input id="w-mentor" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
+              <button class="btn btn-primary" type="submit">Join the waitlist</button>
+            </div>
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="wait-note">Free. One email when a place opens. Nothing else.</p>
+            <p class="wait-msg" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+
+        <article class="tile full">
+          <div class="tile-top"><span class="stamp">Sold out</span></div>
+          <h3>The Book Marketing Partnership</h3>
+          <p class="price">$3,890<small>per year</small></p>
+          <div class="limit"><span class="limit-tag">Only 10 authors per year</span><button class="tip" type="button" aria-label="Why only 10 places">i</button><span class="tip-text" role="tooltip">I do all of this work myself, with no assistants and no AI. That is why I can only take 10 authors a year. More clients would mean less of me for each of you.</span></div>
+          <p class="sum">I build the complete marketing plan for your book, then I work it with you for a year as your personal marketing and PR manager.</p>
+          <p class="meta">12 months · 10 authors per year</p>
+          <p class="nda">Confidentiality agreement included</p>
+          <p class="split"><b>Pay in 2 parts:</b> $2,000 to start, $1,890 within 60 days.</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d-partner"><span>What it is</span><i aria-hidden="true"></i></button>
+          <div class="detail" id="d-partner" hidden>
+            <ul>
+              <li>We set your goals together, then I build a realistic marketing plan for your book that we follow step by step</li>
+              <li>Bonus: I run or direct your Substack and one more social network, with the content plan and Notes planned in advance</li>
+              <li>Once a week we check your writing progress and what the plan needs next</li>
+              <li>We track your stats and results regularly and adjust the plan as we learn what works</li>
+              <li>After 12 months you own a proven marketing playbook you can reuse for your next books</li>
+            </ul>
+            <p class="for"><b>For</b> authors who want a real plan and a partner who stays with them, not a one time consultation.</p>
+          </div>
+          <form class="wait" data-list="author-platform-partnership" novalidate>
+            <label class="wait-label" for="w-partner">All 10 places this year are taken. Get one email when a place opens.</label>
+            <div class="wait-row">
+              <input id="w-partner" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
+              <button class="btn btn-primary" type="submit">Join the waitlist</button>
+            </div>
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="wait-note">Free. One email when a place opens. Nothing else.</p>
+            <p class="wait-msg" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="eyebrow mono">Not sure yet?</p>
+          <h2>Have not picked one? Write to me.</h2>
+          <p>If you have questions, or you do not know which program fits your book, tell me about it. I answer personally and honestly, even if the honest answer is that you do not need me yet.</p>
+        </div>
+        <form class="contact-form" novalidate>
+          <div><label for="c-name">Your name</label><input id="c-name" name="name" type="text" autocomplete="name"></div>
+          <div><label for="c-email">Your email</label><input id="c-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"></div>
+          <div><label for="c-msg">Your question</label><textarea id="c-msg" name="message" required placeholder="Tell me about your book and what you need."></textarea></div>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="wait-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mono">How it works</p>
+        <h2 id="how-h">From order to result. Five steps.</h2>
+      </div>
+      <ol class="steps five">
+        <li>
+          <h3>Choose and pay</h3>
+          <p>Pay by card on a secure payment page. Prices are in euros. If you pay in USD, the price is converted at the current exchange rate. The yearly programs can be paid in 2 parts.</p>
+        </li>
+        <li>
+          <h3>I contact you</h3>
+          <p>Within 24 hours of your order I write to you personally with the specifics of how we work together.</p>
+        </li>
+        <li>
+          <h3>We sign confidentiality</h3>
+          <p>Before you send me anything, we sign the confidentiality agreement. Your book stays between us.</p>
+        </li>
+        <li>
+          <h3>You send, we start</h3>
+          <p>Written programs: send your pages as Word or PDF. Yearly programs: we set the plan and book the first call.</p>
+        </li>
+        <li>
+          <h3>You get the result</h3>
+          <p>Written programs arrive by the agreed delivery date. Yearly programs run with a weekly chat and a plan we review together.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="wrap about-grid">
+      <figure>
+        <img src="assets/tomas-blazo-about.jpg" width="800" height="1060" alt="Tomas Blazo, author and former publisher" loading="lazy">
+      </figure>
+      <div class="about-copy">
+        <p class="eyebrow mono">About Tomas Blazo</p>
+        <h2>Publishing and Writing Expert</h2>
+        <p>I did not take the traditional path to becoming a writer.</p>
+        <p>My first book sold well enough that I decided to build something bigger. I founded a publishing house that brought authors like Arnold Schwarzenegger and Jordan Belfort to Central European readers. For 15 years I ran that company, worked with global names and published titles that sold hundreds of thousands of copies. Authors I worked with include New York Times bestsellers such as Mitch Albom, Bronnie Ware and Randy Gage.</p>
+        <p><b>Then it all fell apart.</b></p>
+        <p>Four years behind bars with nothing but a pen, notebook pages and time taught me more about the raw truth of storytelling than any boardroom ever could. I have seen the view from the top. I have lived at rock bottom. Between those two worlds I held onto the only constant that kept me sane: writing.</p>
+        <p>I read manuscripts for a living, so I know the exact page where a reader quits. I will not tell you your book is great when it isn't. Flattery is the most expensive thing a writer can buy.</p>
+        <p class="lead-in">On Substack I write:</p>
+        <ul>
+          <li><b>The Other Side of the Desk:</b> my main series, including The Writer's Blueprint, a framework on how to outline, write, finish and publish books that sell, built on 15 years of industry experience.</li>
+          <li><b>Behind the Purple Door:</b> my true prison story.</li>
+          <li><b>Short stories and serialized novels.</b></li>
+        </ul>
+        <a class="btn btn-ghost" href="https://tomasblazo.substack.com" data-substack target="_blank" rel="noopener">Read The Other Side of the Desk</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="books" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mono">My books</p>
+        <h2>8 books of my own.</h2>
+        <p>I write what I teach. I know what a finished book costs.</p>
+      </div>
+      <div class="books-row">
+        <figure class="book"><img src="assets/book-goodpoint.jpg" width="420" height="596" alt="Goodpoint, a novel by Roberto Canducci" loading="lazy"><figcaption><b>Goodpoint</b>A novel</figcaption></figure>
+        <figure class="book"><img src="assets/book-curio.jpg" width="301" height="405" alt="Curio, A Tree from Adirondack, a Christmas story" loading="lazy"><figcaption><b>Curio: A Tree from Adirondack</b>A Christmas story</figcaption></figure>
+        <figure class="book"><img src="assets/book-harmony.jpg" width="302" height="476" alt="The Harmony of Living" loading="lazy"><figcaption><b>The Harmony of Living</b>10 simple steps</figcaption></figure>
+        <figure class="book"><img src="assets/book-start-writing.jpg" width="300" height="445" alt="How You Can Start Writing Your Book Successfully" loading="lazy"><figcaption><b>How You Can Start Writing Your Book Successfully</b>On writing a book</figcaption></figure>
+        <figure class="book"><img src="assets/book-6-routines.jpg" width="301" height="422" alt="6 Routines of Successful Persons" loading="lazy"><figcaption><b>6 Routines of Successful Persons</b>Personal development</figcaption></figure>
+      </div>
+      <p class="books-note">Some of my books were published under the pen name Roberto F. Canducci.</p>
+      <p class="group-label gap-top mono">Also published in Slovak</p>
+      <div class="books-sk">
+        <figure class="book"><img src="assets/book-3-kroky.jpg" width="357" height="506" alt="3 kroky k pokojnému životu" loading="lazy"><figcaption><b>3 kroky k pokojnému životu</b></figcaption></figure>
+        <figure class="book"><img src="assets/book-ako-zit.jpg" width="314" height="493" alt="Ako žiť jednoduchšie pomocou afirmácií" loading="lazy"><figcaption><b>Ako žiť jednoduchšie pomocou afirmácií</b>with Vladimíra Šebová</figcaption></figure>
+        <figure class="book"><img src="assets/book-100-afirmacii.jpg" width="360" height="478" alt="100 pozitívnych afirmácií" loading="lazy"><figcaption><b>100 pozitívnych afirmácií</b>with Vladimíra Šebová</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="free-band">
+        <div>
+          <h2>Not ready to buy? Start free.</h2>
+          <p>Every subscriber gets two free downloads: the Publishing Survival Kit and the Query Page Template. Paid members also get one Personal Review a year included.</p>
+        </div>
+        <a class="btn btn-primary" href="https://tomasblazo.substack.com" data-substack target="_blank" rel="noopener">Join on Substack</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="terms" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mono">Questions</p>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Who is this for?</summary>
+          <p>Writers working on a book in English, fiction or nonfiction, from first draft to submission. If you want honest feedback instead of applause, you are in the right place.</p>
+        </details>
+        <details>
+          <summary>Do you guarantee a publishing deal?</summary>
+          <p>No. Nobody honest can. I guarantee a clear, specific diagnosis of your pages and a list of what to fix. What you do with it is up to you.</p>
+        </details>
+        <details>
+          <summary>How long does it take?</summary>
+          <p>Query Letter and First 15 Pages Review: 7 days. How to Sell Your Book: 10 days. Written Manuscript Edit: the delivery date is agreed with you before you pay, based on your word count. The clock starts when I receive your material.</p>
+        </details>
+        <details>
+          <summary>What if I am not happy?</summary>
+          <p>You are covered by a 100% money back guarantee for 30 days. If you are not happy within 30 days of your order, write to me and you get every cent back.</p>
+        </details>
+        <details>
+          <summary>Is my book kept confidential?</summary>
+          <p>100%. A confidentiality agreement comes automatically with every program. I tell nobody anything about your book.</p>
+        </details>
+        <details>
+          <summary>Do you use AI?</summary>
+          <p>No. I do everything myself. Your manuscript and your feedback never go through AI. It is old school work, done by one human who has read thousands of manuscripts.</p>
+        </details>
+        <details>
+          <summary>Can I pay in installments?</summary>
+          <p>Yes, for the two yearly programs. The Book Mentorship: $3,500 to start and $2,790 within 60 days. The Book Marketing Partnership: $2,000 to start and $1,890 within 60 days. The three open programs are paid in full at checkout.</p>
+        </details>
+        <details>
+          <summary>Why are some programs limited to 5 or 10 people a year?</summary>
+          <p>Because I do all the work myself, one to one. I cannot give you my full attention if I take on more clients, so I do not.</p>
+        </details>
+        <details>
+          <summary>Who owns my work?</summary>
+          <p>You do. Your manuscript stays yours and stays private. I never share it or use it anywhere.</p>
+        </details>
+        <details>
+          <summary>How do payments work?</summary>
+          <p>You pay by card on a secure payment page. Prices are in euros. If you pay in USD, the price is converted at the current exchange rate, so the amount in dollars may differ slightly.</p>
+        </details>
+        <details>
+          <summary>How does the waitlist work?</summary>
+          <p>Joining is free. When a place opens in a full program, you get one email. Nothing else, and you can ignore it.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="legal" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow mono">Legal</p>
+        <h2>Terms, refunds, confidentiality and privacy.</h2>
+        <p class="upd">Last updated: 7 November 2026.</p>
+      </div>
+      <div class="faq legalbox">
+
+        <details id="legal-terms">
+          <summary>Terms and Conditions</summary>
+          <div class="legal">
+            <h4>1. Who I am</h4>
+            <p>These terms apply to services sold on this website by Tomáš Blažo ("I", "me"), self employed, IČO: [IČO], [address], Czech Republic, email tomas@tomasblazo.com. "You" is the person who orders.</p>
+            <h4>2. What you buy</h4>
+            <p>The programs described on this website: Query Letter and First 15 Pages Review, Written Manuscript Edit, How to Sell Your Book, and, when places are open, The Book Mentorship and The Book Marketing Partnership. The description of a program on this website is the scope of the work. Anything outside it we agree in writing.</p>
+            <h4>3. Order and start</h4>
+            <p>The contract is concluded when your payment is received. I contact you within 24 hours of your order. Before you send me any material, we sign the confidentiality agreement. I start the work when I have your payment, the signed agreement and your material.</p>
+            <h4>4. Delivery</h4>
+            <p>Query Letter and First 15 Pages Review: 7 days. How to Sell Your Book: 10 days. Written Manuscript Edit: the delivery date is agreed with you before you pay, based on your word count. The clock starts when I have your material. If you delay your part, the date moves by the same time.</p>
+            <h4>5. Your part</h4>
+            <p>You send work you have the right to share, in English, as Word or PDF. You answer my questions in a reasonable time. You are responsible for your own decisions about your book.</p>
+            <h4>6. What I do not promise</h4>
+            <p>I do not promise a publishing deal, an agent, sales, reviews or any other result. My work is professional feedback, analysis and writing. What you do with it is up to you.</p>
+            <h4>7. The yearly programs</h4>
+            <p>The Book Mentorship and The Book Marketing Partnership run for 12 months from the start date we agree. Places are limited because I do the work myself. Contact happens as agreed with you: weekly chat as needed, by call, video or in person. You can pay in 2 parts: the first part to start, the second part within 60 days. If the second part is not paid on time, I may pause the work until it is paid.</p>
+            <h4>8. Prices and payment</h4>
+            <p>Prices are in euros. If you pay in USD, the price is converted at the current exchange rate, so the amount in dollars may differ slightly. Payments are processed by a third party payment provider. [VAT: state here whether you are a VAT payer.]</p>
+            <h4>9. Money back guarantee</h4>
+            <p>You are covered by a 100% money back guarantee for 30 days. The details are in the Refund Policy below.</p>
+            <h4>10. Your work and my work</h4>
+            <p>Your manuscript, your ideas and your book stay yours. I get no rights to them. Texts I write for you, such as a synopsis or a book description, you may use freely once you have paid in full.</p>
+            <h4>11. How I work</h4>
+            <p>I do the work myself. I do not put your manuscript or materials into AI tools. Confidentiality is covered in its own section below.</p>
+            <h4>12. Liability</h4>
+            <p>As far as the law allows, my liability for any claim connected with a program is limited to the amount you paid for that program. This does not limit liability that cannot be limited by law, and it does not reduce your rights as a consumer.</p>
+            <h4>13. If I cannot deliver</h4>
+            <p>If I cannot deliver a program, I refund the part I did not deliver.</p>
+            <h4>14. Complaints and disputes</h4>
+            <p>Write to tomas@tomasblazo.com and I will answer as soon as I can, normally within 14 days. These terms are governed by Czech law. If you are a consumer, you also keep the mandatory protection of the country where you live. If we cannot settle a dispute, a consumer in the Czech Republic or the EU may use the Czech Trade Inspection Authority (Česká obchodní inspekce, www.coi.cz) as an out of court body.</p>
+            <h4>15. Changes</h4>
+            <p>The terms in force on the day of your order apply to that order.</p>
+          </div>
+        </details>
+
+        <details id="legal-refunds">
+          <summary>Refund Policy</summary>
+          <div class="legal">
+            <h4>100% money back, 30 days</h4>
+            <p>If you are not happy with a program, write to tomas@tomasblazo.com within 30 days of your order and I refund the full amount you paid. You do not have to explain, although I always want to know what went wrong.</p>
+            <h4>How the refund works</h4>
+            <ul>
+              <li>I refund to the payment method you used, within 14 days of your request.</li>
+              <li>If you paid in USD, your bank or card provider may show a slightly different amount because of exchange rates.</li>
+              <li>For programs paid in 2 parts, I refund everything paid so far and the remaining part is cancelled.</li>
+              <li>After a refund I stop the work and delete your materials.</li>
+            </ul>
+            <h4>After 30 days</h4>
+            <p>After 30 days a refund is not available, unless I fail to deliver what I promised or the law requires otherwise.</p>
+            <h4>Your legal rights</h4>
+            <p>This guarantee is on top of your rights by law. It does not reduce them.</p>
+          </div>
+        </details>
+
+        <details id="legal-confidentiality">
+          <summary>Confidentiality</summary>
+          <div class="legal">
+            <p>Every program includes a confidentiality agreement automatically. We sign it at the start, before you send me anything.</p>
+            <ul>
+              <li>I tell nobody anything about your book, your plans or your ideas.</li>
+              <li>I do not say that you are my client without your written permission.</li>
+              <li>I use your material only to do your work. I do not share it, publish it or put it into AI tools.</li>
+              <li>I store your files securely. I keep them only as long as needed to deliver the work and answer your follow up questions, and I delete them earlier if you ask.</li>
+              <li>The only exception is a disclosure required by law or by a court. If the law allows it, I tell you first.</li>
+            </ul>
+            <p>The obligation continues after the work is finished.</p>
+          </div>
+        </details>
+
+        <details id="legal-privacy">
+          <summary>Privacy Policy</summary>
+          <div class="legal">
+            <h4>Who is responsible</h4>
+            <p>Tomáš Blažo, self employed, IČO: [IČO], [address], Czech Republic. Contact: tomas@tomasblazo.com.</p>
+            <h4>What I collect and why</h4>
+            <ul>
+              <li>Name, email and message you send through the contact form, to answer you.</li>
+              <li>Your email if you join a waitlist, to tell you when a place opens. You agree to this by joining, and you can withdraw at any time.</li>
+              <li>Order details from the payment provider, to deliver your order and keep the accounts the law requires. I do not see your full card number.</li>
+              <li>The manuscripts and material you send me, to do the work you ordered.</li>
+            </ul>
+            <h4>How long I keep it</h4>
+            <p>Waitlist emails until a place opens or you ask me to remove you. Accounting records as long as Czech law requires. Your manuscripts as described under Confidentiality. Other messages only as long as needed.</p>
+            <h4>Who else sees it</h4>
+            <p>Only the providers needed to run this: the payment provider, the form and email provider, the website host and my accountant. I do not sell your data. Some providers may process data outside the EU under standard legal safeguards.</p>
+            <h4>Cookies and fonts</h4>
+            <p>This website does not use cookies or tracking tools. It loads fonts from Google Fonts, so your browser connects to Google servers to get them.</p>
+            <h4>Your rights</h4>
+            <p>You can ask for access to your data, correction, deletion, restriction, a copy, or object to its use. Write to tomas@tomasblazo.com. You can also complain to the Czech Office for Personal Data Protection (Úřad pro ochranu osobních údajů, www.uoou.gov.cz).</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="mono">Tomas Blazo</p>
+    <p>Self employed. Prague, Czech Republic. IČO: [IČO]</p>
+    <p>Contact: <a href="mailto:tomas@tomasblazo.com">tomas@tomasblazo.com</a></p>
+    <p class="links"><a href="#legal-terms">Terms</a><a href="#legal-refunds">Refund policy</a><a href="#legal-confidentiality">Confidentiality</a><a href="#legal-privacy">Privacy</a></p>
+    <p>I use your email only for what you asked for.</p>
+    <p>© <span id="yr">2026</span> Tomas Blazo</p>
+  </div>
+</footer>
+
+<script>
+/* ============ SET THESE BEFORE GOING LIVE ============ */
+var CONFIG = {
+  // Paste the payment link for each program between the quotes.
+  links: { query: "", edit: "", path: "" },
+  // Waitlist: URL of a form endpoint that accepts a POST (for example Formspree or a MailerLite form).
+  waitlistEndpoint: "",
+  // Contact form: URL of a form endpoint that accepts a POST (for example Formspree). If empty, visitors are told to email.
+  contactEndpoint: "",
+  substackUrl: "https://tomasblazo.substack.com",
+  email: "tomas@tomasblazo.com"
+};
+/* ====================================================== */
+
+(function () {
+  try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch (e) {}
+
+  document.querySelectorAll('a[data-substack]').forEach(function (a) { a.href = CONFIG.substackUrl; });
+
+  // info tooltips (tap friendly)
+  document.querySelectorAll('.tip').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.stopPropagation(); b.parentNode.classList.toggle('open'); });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.limit.open').forEach(function (l) { l.classList.remove('open'); });
+  });
+
+  // expandable tiles
+  document.querySelectorAll('.more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (panel) panel.hidden = open;
+    });
+  });
+
+  // order buttons
+  document.querySelectorAll('[data-product]').forEach(function (a) {
+    var link = CONFIG.links[a.getAttribute('data-product')];
+    var notice = a.parentNode.querySelector('.notice');
+    if (link) {
+      a.href = link; a.target = '_blank'; a.rel = 'noopener';
+    } else {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        notice.textContent = 'The payment page is not connected yet. Email ' + CONFIG.email + ' to order.';
+        notice.hidden = false;
+      });
+    }
+  });
+
+  // waitlist forms
+  document.querySelectorAll('form.wait').forEach(function (form) {
+    var msg = form.querySelector('.wait-msg');
+    var btn = form.querySelector('button[type="submit"]');
+    function say(text, kind) { msg.textContent = text; msg.className = 'wait-msg ' + (kind || ''); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements.email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Enter a valid email address.', 'err'); return; }
+      if (form.elements._gotcha && form.elements._gotcha.value) { return; }
+      if (!CONFIG.waitlistEndpoint) {
+        say('The waitlist is not connected yet. Email ' + CONFIG.email + ' and I will add you.', 'err');
+        return;
+      }
+      var fd = new FormData(form);
+      fd.append('list', form.getAttribute('data-list'));
+      btn.disabled = true;
+      fetch(CONFIG.waitlistEndpoint, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('bad status');
+          form.elements.email.value = '';
+          say('You are on the list. I will email you when a place opens.', 'ok');
+        })
+        .catch(function () { say('Something went wrong. Try again, or email ' + CONFIG.email + '.', 'err'); })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+  // contact form
+  document.querySelectorAll('form.contact-form').forEach(function (form) {
+    var msg = form.querySelector('.wait-msg');
+    var btn = form.querySelector('button[type="submit"]');
+    function say(text, kind) { msg.textContent = text; msg.className = 'wait-msg ' + (kind || ''); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements.email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Enter a valid email address.', 'err'); return; }
+      if (!form.elements.message.value.trim()) { say('Write your question first.', 'err'); return; }
+      if (form.elements._gotcha && form.elements._gotcha.value) { return; }
+      if (!CONFIG.contactEndpoint) { say('The form is not connected yet. Email ' + CONFIG.email + ' with your question.', 'err'); return; }
+      btn.disabled = true;
+      fetch(CONFIG.contactEndpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('bad status');
+          form.reset();
+          say('Message sent. I will answer you personally.', 'ok');
+        })
+        .catch(function () { say('Something went wrong. Try again, or email ' + CONFIG.email + '.', 'err'); })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+
+  // open the legal section a link points to
+  function openLegal() {
+    var el = location.hash && document.getElementById(location.hash.slice(1));
+    if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+  }
+  window.addEventListener('hashchange', openLegal);
+  openLegal();
+})();
+</script>
+</html>
