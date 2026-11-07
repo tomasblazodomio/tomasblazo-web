@@ -800,7 +800,7 @@ p { margin: 0; }
             <h4>How long I keep it</h4>
             <p>Waitlist emails until a place opens or you ask me to remove you. Accounting records as long as Czech law requires. Your manuscripts as described under Confidentiality. Other messages only as long as needed.</p>
             <h4>Who else sees it</h4>
-            <p>Only the providers needed to run this: the payment provider, the form and email provider, the website host and my accountant. I do not sell your data. Some providers may process data outside the EU under standard legal safeguards.</p>
+            <p>Only the providers needed to run this: the payment provider, the form provider (FormSubmit), the website host and my accountant. I do not sell your data. Some providers may process data outside the EU under standard legal safeguards.</p>
             <h4>Cookies and fonts</h4>
             <p>This website does not use cookies or tracking tools. It loads fonts from Google Fonts, so your browser connects to Google servers to get them.</p>
             <h4>Your rights</h4>
@@ -830,9 +830,9 @@ var CONFIG = {
   // Paste the payment link for each program between the quotes.
   links: { query: "", edit: "", path: "" },
   // Waitlist: URL of a form endpoint that accepts a POST (for example Formspree or a MailerLite form).
-  waitlistEndpoint: "",
+  waitlistEndpoint: "https://formsubmit.co/ajax/tomas@tomasblazo.com",
   // Contact form: URL of a form endpoint that accepts a POST (for example Formspree). If empty, visitors are told to email.
-  contactEndpoint: "",
+  contactEndpoint: "https://formsubmit.co/ajax/tomas@tomasblazo.com",
   substackUrl: "https://tomasblazo.substack.com",
   email: "tomas@tomasblazo.com"
 };
@@ -892,6 +892,7 @@ var CONFIG = {
       }
       var fd = new FormData(form);
       fd.append('list', form.getAttribute('data-list'));
+      fd.append('_subject', 'New waitlist signup: ' + form.getAttribute('data-list'));
       btn.disabled = true;
       fetch(CONFIG.waitlistEndpoint, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
         .then(function (r) {
@@ -916,7 +917,7 @@ var CONFIG = {
       if (form.elements._gotcha && form.elements._gotcha.value) { return; }
       if (!CONFIG.contactEndpoint) { say('The form is not connected yet. Email ' + CONFIG.email + ' with your question.', 'err'); return; }
       btn.disabled = true;
-      fetch(CONFIG.contactEndpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      fetch(CONFIG.contactEndpoint, { method: 'POST', body: (function () { var d = new FormData(form); d.append('_subject', 'New message from work.tomasblazo.com'); return d; })(), headers: { 'Accept': 'application/json' } })
         .then(function (r) {
           if (!r.ok) throw new Error('bad status');
           form.reset();
