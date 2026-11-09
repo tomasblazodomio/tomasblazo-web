@@ -166,6 +166,14 @@ p { margin: 0; }
 .order-dialog .od-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; color: var(--muted); font-size: 28px; line-height: 1; cursor: pointer; }
 .order-dialog .btn { width: 100%; }
 
+/* which one */
+.which { border: 1px solid var(--rule); background: var(--surface); border-radius: 4px; padding: 28px 32px; margin: 0 0 40px; }
+.which h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 32px); margin: 0 0 16px; }
+.which ul { list-style: none; margin: 0; padding: 0; }
+.which li { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 8px 24px; padding: 14px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.which li span { color: #d0c4b4; }
+.which li b { color: var(--amber); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; }
+@media (max-width: 700px) { .which { padding: 22px 18px; } .which li { grid-template-columns: 1fr; gap: 4px; } }
 /* credentials */
 .creds { border-block: 1px solid var(--rule); background: var(--surface); }
 .creds ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -404,6 +412,16 @@ p { margin: 0; }
         <p class="eyebrow mono">Work with me</p>
         <h2>Pick how deep you want to go.</h2>
         <p>Three programs are open. Two are full for this year. Every open program is written feedback: no vague encouragement, just a clear list of what to fix and why. Every program comes with a confidentiality agreement and a 30 day 100% delivery guarantee.</p>
+      </div>
+
+      <div class="which">
+        <h3>Which one is for me?</h3>
+        <ul>
+          <li><span>You have a query letter and you are about to send it out.</span><b>Query Letter and First 15 Pages, $164</b></li>
+          <li><span>Your book is finished and you want to know exactly what is on the page and how to fix it.</span><b>Written Manuscript Edit, $877</b></li>
+          <li><span>You do not know how to sell your book or which road to take: publisher, agent or self publishing.</span><b>How to Sell Your Book, $432</b></li>
+          <li><span>You want a mentor beside you from the first idea to the last page.</span><b>The Book Mentorship, waitlist</b></li>
+        </ul>
       </div>
 
       <p class="group-label mono">Open now</p>
