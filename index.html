@@ -174,6 +174,20 @@ p { margin: 0; }
 .which li span { color: #d0c4b4; }
 .which li b { color: var(--amber); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 500; }
 @media (max-width: 700px) { .which { padding: 22px 18px; } .which li { grid-template-columns: 1fr; gap: 4px; } }
+/* ebook */
+.ebook { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: center; border: 1px solid var(--rule); background: var(--surface); border-radius: 4px; padding: 48px; }
+.ebook figure { margin: 0; }
+.ebook img { width: 100%; height: auto; max-width: 380px; margin: 0 auto; border-radius: 4px; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+.ebook h3 { font-size: clamp(30px, 3.6vw, 44px); margin: 8px 0 14px; }
+.ebook .lead { color: #d0c4b4; margin: 0 0 18px; }
+.ebook ul { list-style: none; margin: 0 0 22px; padding: 0; }
+.ebook li { position: relative; padding: 6px 0 6px 22px; color: var(--text); }
+.ebook li::before { content: ""; position: absolute; left: 0; top: 15px; width: 8px; height: 8px; background: var(--amber); }
+.ebook .eb-price { font-family: var(--font-display); font-size: 40px; font-weight: 600; color: var(--amber); margin: 0 0 4px; line-height: 1; }
+.ebook .eb-meta { color: var(--muted); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 20px; }
+.ebook .eb-free { margin: 18px 0 0; color: var(--muted); font-size: 15px; }
+.ebook .eb-free a { color: var(--amber); }
+@media (max-width: 860px) { .ebook { grid-template-columns: 1fr; padding: 28px 22px; gap: 32px; } }
 /* credentials */
 .creds { border-block: 1px solid var(--rule); background: var(--surface); }
 .creds ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -338,15 +352,14 @@ p { margin: 0; }
   html { scroll-behavior: auto; }
   .more i::before, .more i::after, .faq summary::after { transition: none; }
 }
-</style>
-</head>
-<body>
+</style></head><body>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">Tomas Blazo</a>
     <nav class="nav" aria-label="Main">
       <a href="#work">Work with me</a>
+      <a href="#ebook">Ebook</a>
       <a href="#about">About</a>
       <a href="#terms">FAQ</a>
       <a href="https://tomasblazo.substack.com" data-substack target="_blank" rel="noopener">Substack</a>
@@ -637,6 +650,32 @@ p { margin: 0; }
     </div>
   </section>
 
+  <section class="sec" id="ebook" style="padding-top:0">
+    <div class="wrap">
+      <article class="ebook">
+        <figure><img src="ebook-cover.jpg" width="900" height="1125" alt="The Hardest Part of Writing, an ebook by Tomas Blazo" loading="lazy"></figure>
+        <div>
+          <p class="eyebrow mono">New ebook</p>
+          <h3>The Hardest Part of Writing</h3>
+          <p class="lead">The 10 most common problems writers have, and how to fix every damn one of them. Straight talk, no motivational wallpaper.</p>
+          <ul>
+            <li>10 problems, ranked by how much they hurt, from editing and starting to finishing and finding readers</li>
+            <li>For each one: the truth about what is really going on and 8 concrete steps</li>
+            <li>One small thing to do tonight, so the chapter does not stay on the page</li>
+            <li>A 14 day plan and a one page cheat sheet for your wall</li>
+          </ul>
+          <p class="eb-price">$13</p>
+          <p class="eb-meta">PDF · 58 pages · sent to your email</p>
+          <div class="cta">
+            <a class="btn btn-primary" data-product="ebook" data-price="$13" href="#ebook">Get the ebook for $13</a>
+            <p class="notice" hidden></p>
+          </div>
+          <p class="eb-free">Paid members of my <a data-substack href="https://tomasblazo.substack.com">Substack</a> get it free with their subscription. After you pay, I send the PDF to your email, usually within a few hours and always within 24 hours.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section class="sec" id="about">
     <div class="wrap about-grid">
       <figure>
@@ -889,7 +928,7 @@ p { margin: 0; }
 /* ============ SET THESE BEFORE GOING LIVE ============ */
 var CONFIG = {
   // Paste the payment link for each program between the quotes.
-  links: { query: "https://checkout.revolut.com/pay/c9679e94-9dd7-4805-bd10-71b1993e7529", edit: "https://checkout.revolut.com/pay/b40dc411-be13-41a7-99fb-90ff211971e8", path: "https://checkout.revolut.com/pay/975c77a1-7911-46c5-a8e6-92bda6d9ea61" },
+  links: { query: "https://checkout.revolut.com/pay/c9679e94-9dd7-4805-bd10-71b1993e7529", edit: "https://checkout.revolut.com/pay/b40dc411-be13-41a7-99fb-90ff211971e8", path: "https://checkout.revolut.com/pay/975c77a1-7911-46c5-a8e6-92bda6d9ea61", ebook: "https://checkout.revolut.com/pay/9142e15f-1254-4ca2-b2bb-77ecd6286529" },
   // Waitlist: URL of a form endpoint that accepts a POST (for example Formspree or a MailerLite form).
   waitlistEndpoint: "https://formsubmit.co/ajax/tomas@tomasblazo.com",
   // Contact form: URL of a form endpoint that accepts a POST (for example Formspree). If empty, visitors are told to email.
@@ -1057,5 +1096,4 @@ var CONFIG = {
   openLegal();
 })();
 </script>
-
 </body></html>
